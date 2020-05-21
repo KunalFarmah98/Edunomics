@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="About Us" />
+        <item
+            android:id="@+id/nav_FAQs"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="FAQ" />
+        <item
+            android:id="@+id/nav_Blog"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Blog" />
+        <item
+            android:id="@+id/nav_Wenestor"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Wenestor" />
+    </group>
+</menu>

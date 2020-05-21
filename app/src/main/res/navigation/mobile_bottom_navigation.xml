@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.apps.kunalfarmah.edunomics.ui.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home">
+    </fragment>
+    <fragment
+        android:id="@+id/nav_impact"
+        android:name="com.apps.kunalfarmah.edunomics.ui.ImpactFragment"
+        android:label="@string/home_second"
+        tools:layout="@layout/fragment_impact">
+        <argument
+            android:name="myArg"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_opportunities"
+        android:name="com.apps.kunalfarmah.edunomics.ui.OpportunitiesFragment"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/fragment_opportunities" />
+
+    <fragment
+        android:id="@+id/nav_initiatives"
+        android:name="com.apps.kunalfarmah.edunomics.ui.InitiativesFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_initiatives" />
+</navigation>
