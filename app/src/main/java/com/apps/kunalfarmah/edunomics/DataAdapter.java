@@ -61,9 +61,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.DataViewHolder
                     mcontext.startActivity(intent);
                 }
                 else{
-                    Uri uri = Uri.parse("https://edunomics.in/knowmore");
-                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                    mcontext.startActivity(intent);
+                    mcontext.startActivity(new Intent(mcontext,KnowMore.class));
                 }
             }
         });

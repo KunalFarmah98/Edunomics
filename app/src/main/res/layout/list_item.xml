@@ -51,6 +51,7 @@
             android:background="@drawable/round_button_pink"
             android:textColor="#ffffff"
             android:layout_margin="10dp"
+            android:textAllCaps="false"
             android:text="Know More?"/>
 
         <Button
@@ -59,7 +60,8 @@
             android:layout_height="wrap_content"
             android:textColor="#ffffff"
             android:layout_margin="10dp"
-            android:background="@drawable/round_button"
+            android:textAllCaps="false"
+            android:background="@drawable/bt_gradient"
             android:text="Apply Now"/>
     </LinearLayout>
 

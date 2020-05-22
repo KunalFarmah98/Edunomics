@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.Menu;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -30,6 +32,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private AppBarConfiguration mAppBarConfiguration;
     DrawerLayout drawer;
+
+    ImageButton fb,insta,twt,lin;
 
     @SuppressLint("WrongConstant")
     @Override
@@ -73,6 +77,44 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationUI.setupWithNavController(bottomNavView, navController);
 
         navigationView.setNavigationItemSelectedListener(this);
+
+        fb = findViewById(R.id.fb);
+        insta = findViewById(R.id.insta);
+        twt = findViewById(R.id.twitter);
+        lin = findViewById(R.id.linkedin);
+
+        fb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Uri uri = Uri.parse("https://www.facebook.com/edunomics2020/");
+                Intent intent = new Intent(Intent.ACTION_VIEW,uri);
+                startActivity(intent);
+            }
+        });
+        insta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Uri uri = Uri.parse("https://www.instagram.com/edunomics2020/");
+                Intent intent = new Intent(Intent.ACTION_VIEW,uri);
+                startActivity(intent);
+            }
+        });
+        twt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Uri uri = Uri.parse("https://twitter.com/Edunomics2");
+                Intent intent = new Intent(Intent.ACTION_VIEW,uri);
+                startActivity(intent);
+            }
+        });
+        lin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Uri uri = Uri.parse("https://www.linkedin.com/company/edunomics/");
+                Intent intent = new Intent(Intent.ACTION_VIEW,uri);
+                startActivity(intent);
+            }
+        });
 
 
 
@@ -120,12 +162,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                 break;
             case R.id.nav_joinus:
-                Toast.makeText(this,"Link to Join will open (not available on website",Toast.LENGTH_SHORT).show();
+                uri = Uri.parse("https://edunomics.in/applynow");
+                intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
 
                 break;
             case R.id.nav_Tech:
-                Toast.makeText(this,"Link to tech will open (not available on website",Toast.LENGTH_SHORT).show();
-
+                uri = Uri.parse("http://tech.edunomics.in/");
+                intent = new Intent(Intent.ACTION_VIEW,uri);
+                startActivity(intent);
                 break;
 
 

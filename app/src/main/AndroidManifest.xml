@@ -9,10 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.BlogActivity"></activity>
         <activity
             android:name=".AboutUs"
             android:label=""
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".ui.FAQActivity"
             android:label="@string/title_activity_f_a_q" />
