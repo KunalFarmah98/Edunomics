@@ -2,6 +2,8 @@ package com.apps.kunalfarmah.edunomics;
 
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -9,6 +11,7 @@ import android.view.Menu;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.apps.kunalfarmah.edunomics.ui.FAQActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
@@ -89,17 +92,43 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         switch (item.getItemId()){
             case R.id.nav_about:
-                Toast.makeText(this,"About",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this,AboutUs.class));
                 break;
             case R.id.nav_FAQs:
-                Toast.makeText(this,"FAQ",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, FAQActivity.class));
                 break;
             case R.id.nav_Blog:
-                Toast.makeText(this,"Blog",Toast.LENGTH_SHORT).show();
+                Uri uri = Uri.parse("https://edunomics.in/allblogs");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
                 break;
             case R.id.nav_Wenestor:
-                Toast.makeText(this,"Wenester",Toast.LENGTH_SHORT).show();
+                uri = Uri.parse("http://wenestor.herokuapp.com/");
+                intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
                 break;
+            case R.id.nav_trynalpha:
+                uri = Uri.parse("https://edunomics.in/login");
+                intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+                break;
+            case R.id.nav_privacypolicy:
+                Toast.makeText(this,"Privacy Policy will appear here (not available on website",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.nav_termsofuse:
+                Toast.makeText(this,"Terms of Use will appear here (not available on website",Toast.LENGTH_SHORT).show();
+
+                break;
+            case R.id.nav_joinus:
+                Toast.makeText(this,"Link to Join will open (not available on website",Toast.LENGTH_SHORT).show();
+
+                break;
+            case R.id.nav_Tech:
+                Toast.makeText(this,"Link to tech will open (not available on website",Toast.LENGTH_SHORT).show();
+
+                break;
+
+
         }
         return true;
     }

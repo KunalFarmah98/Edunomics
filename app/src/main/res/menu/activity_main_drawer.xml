@@ -3,22 +3,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
+    <group android:id="@+id/main_menu"
+        android:checkableBehavior="single">
         <item
             android:id="@+id/nav_about"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/about"
             android:title="About Us" />
         <item
             android:id="@+id/nav_FAQs"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/faq"
             android:title="FAQ" />
         <item
             android:id="@+id/nav_Blog"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/baseline_rss_feed_black_36dp"
             android:title="Blog" />
+
+    </group>
+
+    <group android:id="@+id/sec_menu"
+        android:checkableBehavior="single">
         <item
             android:id="@+id/nav_Wenestor"
-            android:icon="@drawable/ic_menu_slideshow"
             android:title="Wenestor" />
+        <item
+            android:id="@+id/nav_trynalpha"
+            android:title="Try Our Alpha" />
+        <item
+            android:id="@+id/nav_termsofuse"
+            android:title="Terms of Use" />
+        <item
+            android:id="@+id/nav_joinus"
+            android:title="Join Us" />
+        <item
+            android:id="@+id/nav_Tech"
+            android:title="Tech" />
+        <item
+            android:id="@+id/nav_privacypolicy"
+            android:title="Privacy Policy" />
     </group>
 </menu>

@@ -26,7 +26,7 @@ public class HomeFragment extends Fragment {
         // Required empty public constructor
     }
     Button career,skill,search;
-    String choice="CAREER",query;
+    String choice="CAREER",query="";
     EditText et;
 
     @Override
@@ -44,7 +44,6 @@ public class HomeFragment extends Fragment {
         career.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 if(career.getAlpha()!=1f)
                 career.setAlpha(1f);
                 if(skill.getAlpha()==1f)
@@ -78,7 +77,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getContext(),
-                        "Will Search for "+et.getText().toString()+" under "+choice+" with api. "
+                        "Will Search for "+et.getText().toString()+" under "+choice+" over api or website url. "
                         ,Toast.LENGTH_SHORT).show();
             }
         });

@@ -2,8 +2,8 @@
     <string name="app_name">Edunomics</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">User</string>
-    <string name="nav_header_subtitle">useradress@email.com</string>
+    <string name="nav_header_title">Kunal Farmah</string>
+    <string name="nav_header_subtitle">kunalfarmah98@email.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
@@ -19,4 +19,5 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_f_a_q">FAQActivity</string>
 </resources>
