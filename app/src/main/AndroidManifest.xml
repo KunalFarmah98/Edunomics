@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.BlogActivity"></activity>
+        <activity android:name=".Chat.ContactsActivity"></activity>
+        <activity android:name=".ui.BlogActivity" />
         <activity
             android:name=".ui.AboutUs"
             android:label=""
@@ -18,6 +19,10 @@
             android:name=".ui.FAQActivity"
             android:label="@string/title_activity_f_a_q" />
         <activity android:name=".ui.KnowMore" />
+        <activity
+            android:name=".Chat.ChatActivity"
+            android:label="Edunomics Chat"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".ui.MainActivity"
             android:label="@string/app_name"

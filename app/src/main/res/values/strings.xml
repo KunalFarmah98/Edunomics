@@ -17,7 +17,8 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="sign_out">Sign Out</string>
+    <string name="send_button_label">Send</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_f_a_q">FAQActivity</string>
 </resources>

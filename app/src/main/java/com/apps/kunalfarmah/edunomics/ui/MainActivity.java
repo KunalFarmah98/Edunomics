@@ -13,6 +13,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.apps.kunalfarmah.edunomics.Chat.ChatActivity;
 import com.apps.kunalfarmah.edunomics.R;
 import com.apps.kunalfarmah.edunomics.ui.AboutUs;
 import com.apps.kunalfarmah.edunomics.ui.BlogActivity;
@@ -176,6 +177,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 intent = new Intent(Intent.ACTION_VIEW,uri);
                 startActivity(intent);
                 break;
+
+            case R.id.nav_chat:
+                startActivity(new Intent(this, ChatActivity.class));
 
 
         }
