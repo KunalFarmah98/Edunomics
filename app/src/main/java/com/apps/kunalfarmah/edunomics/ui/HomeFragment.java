@@ -26,7 +26,7 @@ public class HomeFragment extends Fragment {
         // Required empty public constructor
     }
     Button career,skill,search;
-    String choice,query;
+    String choice="CAREER",query;
     EditText et;
 
     @Override
@@ -44,7 +44,10 @@ public class HomeFragment extends Fragment {
         career.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                if(career.getAlpha()!=1f)
                 career.setAlpha(1f);
+                if(skill.getAlpha()==1f)
                 skill.setAlpha(0.3f);
                 choice="CAREER";
             }
@@ -52,9 +55,20 @@ public class HomeFragment extends Fragment {
         skill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                career.setAlpha(0.0f);
+                if(career.getAlpha()==1f)
+                career.setAlpha(0.3f);
+                if(skill.getAlpha()!=1f)
                 skill.setAlpha(1f);
                 choice="SKILL";
+            }
+        });
+
+        et.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus)
+                    et.setHint("");
+                else
+                    et.setHint("Enter Your Query");
             }
         });
 
@@ -64,7 +78,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getContext(),
-                        "Will Search for "+query+" under "+choice+" with api. "
+                        "Will Search for "+et.getText().toString()+" under "+choice+" with api. "
                         ,Toast.LENGTH_SHORT).show();
             }
         });

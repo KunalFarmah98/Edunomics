@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     tools:context=".ui.HomeFragment">
 
     <RelativeLayout
@@ -15,9 +16,12 @@
         android:layout_height="wrap_content"
         android:textSize="50sp"
         android:padding="20dp"
+        android:textAlignment="viewStart"
+        android:gravity="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         android:textColor="@android:color/black"
         android:text="WELCOME TO THE WORLD OF EDUNOMICS"/>
+
 
     <EditText
         android:id="@+id/query"
@@ -25,10 +29,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/welcome"
         android:padding="20dp"
+        android:hint="Enter Your Query"
         android:layout_margin="10dp"
-        android:textAlignment="viewStart"
-        android:layout_centerHorizontal="true"
-        android:hint="Enter Your Query"/>
+        android:layout_centerHorizontal="true"/>
 
     <Button
         android:id="@+id/search"
