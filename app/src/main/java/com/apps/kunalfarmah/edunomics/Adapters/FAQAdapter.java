@@ -1,4 +1,4 @@
-package com.apps.kunalfarmah.edunomics;
+package com.apps.kunalfarmah.edunomics.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,7 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.core.util.Pair;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.ms.square.android.expandabletextview.ExpandableTextView;
+import com.apps.kunalfarmah.edunomics.R;
+import com.apps.kunalfarmah.edunomics.ui.FAQActivity;
 
 import java.util.ArrayList;
 
@@ -43,9 +44,15 @@ public class FAQAdapter extends RecyclerView.Adapter<FAQAdapter.FAQViewHolder> {
         holder.ly.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(holder.expanded.getVisibility()==View.GONE)
-                holder.expanded.setVisibility(View.VISIBLE);
-                else holder.expanded.setVisibility(View.GONE);
+                if(holder.expanded.getVisibility()==View.GONE){
+                    FAQActivity.expand(holder.expanded);
+//                    holder.expanded.setVisibility(View.VISIBLE);
+                }
+
+                else {
+                    FAQActivity.collapse(holder.expanded);
+                    //holder.expanded.setVisibility(View.GONE);
+                }
             }
         });
         holder.expand.setOnClickListener(new View.OnClickListener() {

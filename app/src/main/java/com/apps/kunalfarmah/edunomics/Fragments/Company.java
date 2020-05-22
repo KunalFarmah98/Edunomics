@@ -1,4 +1,4 @@
-package com.apps.kunalfarmah.edunomics.ui;
+package com.apps.kunalfarmah.edunomics.Fragments;
 
 import android.os.Bundle;
 
@@ -11,7 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.apps.kunalfarmah.edunomics.FAQAdapter;
+import com.apps.kunalfarmah.edunomics.Adapters.FAQAdapter;
 import com.apps.kunalfarmah.edunomics.R;
 
 import java.util.ArrayList;

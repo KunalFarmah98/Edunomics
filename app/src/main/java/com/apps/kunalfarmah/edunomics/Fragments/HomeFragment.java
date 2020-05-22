@@ -1,4 +1,4 @@
-package com.apps.kunalfarmah.edunomics.ui;
+package com.apps.kunalfarmah.edunomics.Fragments;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;

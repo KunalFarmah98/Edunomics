@@ -4,47 +4,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     android:orientation="vertical"
-    tools:context=".AboutUs">
+    tools:context=".ui.AboutUs">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="40sp"
-        android:layout_margin="10dp"
-        android:textColor="@android:color/black"
         android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:text="ABOUT EDUNOMICS"
         android:textAlignment="center"
-        android:text="ABOUT EDUNOMICS"/>
+        android:textColor="@android:color/black"
+        android:textSize="40sp" />
 
     <ImageView
         android:id="@+id/img"
-        android:layout_gravity="center"
-        android:layout_width="200dp"
+        android:layout_width="300dp"
         android:layout_height="200dp"
+        android:layout_gravity="center"
         android:layout_margin="10dp"
         android:layout_marginBottom="20dp"
-        android:background="@drawable/aboutus"/>
+        android:background="@drawable/aboutus" />
 
     <TextView
+        style="@style/TextAppearance.AppCompat.Headline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="17sp"
         android:layout_marginTop="20dp"
-        android:textColor="@android:color/black"
-        style="@style/TextAppearance.AppCompat.Headline"
         android:padding="10dp"
-        android:text="We are a bootstrap startup with a vision to impact education and economics solving complex problems with simple solutions. Edunomics combines tech expertise and business intelligence to catalyze change and deliver results. We are employing top talent to provide a uniquely matching solution for your unique problem."/>
+        android:text="We are a bootstrap startup with a vision to impact education and economics solving complex problems with simple solutions. Edunomics combines tech expertise and business intelligence to catalyze change and deliver results. We are employing top talent to provide a uniquely matching solution for your unique problem."
+        android:textColor="@android:color/black"
+        android:textSize="17sp" />
 
     <Button
         android:id="@+id/knowmore"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/round_button_pink"
-        android:textColor="#ffffff"
         android:layout_gravity="center"
         android:layout_margin="20dp"
-        android:textAllCaps="false"
+        android:background="@drawable/round_button_pink"
         android:text="Know More?"
-        />
+        android:textAllCaps="false"
+        android:textColor="#ffffff" />
 </LinearLayout>

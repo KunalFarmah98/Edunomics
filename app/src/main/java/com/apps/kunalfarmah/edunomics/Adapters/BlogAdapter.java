@@ -1,4 +1,4 @@
-package com.apps.kunalfarmah.edunomics;
+package com.apps.kunalfarmah.edunomics.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,7 +6,6 @@ import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -15,7 +14,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.apps.kunalfarmah.edunomics.ui.KnowMore;
+import com.apps.kunalfarmah.edunomics.Models.BlogModel;
+import com.apps.kunalfarmah.edunomics.R;
 
 import java.util.ArrayList;
 
@@ -33,7 +33,7 @@ public class BlogAdapter extends RecyclerView.Adapter<BlogAdapter.BlogViewHolder
     @NonNull
     @Override
     public BlogViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.blog_item, parent, false);
         return new BlogViewHolder(view);
     }
 
@@ -55,6 +55,7 @@ public class BlogAdapter extends RecyclerView.Adapter<BlogAdapter.BlogViewHolder
         if(links.size()==1)holder.ib2.setVisibility(View.GONE);
         final String l1 = links.get(0);
         final String l2 = links.get(1);
+
         holder.ib1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

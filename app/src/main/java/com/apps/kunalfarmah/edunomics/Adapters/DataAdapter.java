@@ -1,4 +1,4 @@
-package com.apps.kunalfarmah.edunomics;
+package com.apps.kunalfarmah.edunomics.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,6 +14,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.apps.kunalfarmah.edunomics.Models.DataModel;
+import com.apps.kunalfarmah.edunomics.R;
 import com.apps.kunalfarmah.edunomics.ui.KnowMore;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.apps.kunalfarmah.edunomics;
+package com.apps.kunalfarmah.edunomics.ui;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.apps.kunalfarmah.edunomics.R;
 import com.apps.kunalfarmah.edunomics.ui.KnowMore;
 
 public class AboutUs extends AppCompatActivity {

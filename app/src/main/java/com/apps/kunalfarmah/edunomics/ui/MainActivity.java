@@ -1,4 +1,4 @@
-package com.apps.kunalfarmah.edunomics;
+package com.apps.kunalfarmah.edunomics.ui;
 
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
@@ -13,6 +13,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.apps.kunalfarmah.edunomics.R;
+import com.apps.kunalfarmah.edunomics.ui.AboutUs;
+import com.apps.kunalfarmah.edunomics.ui.BlogActivity;
 import com.apps.kunalfarmah.edunomics.ui.FAQActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
@@ -134,19 +137,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         switch (item.getItemId()){
             case R.id.nav_about:
-                startActivity(new Intent(this,AboutUs.class));
+                startActivity(new Intent(this, AboutUs.class));
                 break;
             case R.id.nav_FAQs:
                 startActivity(new Intent(this, FAQActivity.class));
                 break;
             case R.id.nav_Blog:
-                Uri uri = Uri.parse("https://edunomics.in/allblogs");
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(intent);
+//                Uri uri = Uri.parse("https://edunomics.in/allblogs");
+//                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+//                startActivity(intent);
+                startActivity(new Intent(this, BlogActivity.class));
                 break;
             case R.id.nav_Wenestor:
-                uri = Uri.parse("http://wenestor.herokuapp.com/");
-                intent = new Intent(Intent.ACTION_VIEW, uri);
+                Uri uri = Uri.parse("http://wenestor.herokuapp.com/");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
                 break;
             case R.id.nav_trynalpha:

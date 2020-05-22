@@ -7,13 +7,13 @@
 
     <fragment
         android:id="@+id/navigation_student"
-        android:name="com.apps.kunalfarmah.edunomics.ui.Student"
+        android:name="com.apps.kunalfarmah.edunomics.Fragments.Student"
         android:label="For Students"
         tools:layout="@layout/fragment_student" />
 
     <fragment
         android:id="@+id/navigation_company"
-        android:name="com.apps.kunalfarmah.edunomics.ui.Company"
+        android:name="com.apps.kunalfarmah.edunomics.Fragments.Company"
         android:label="For Companies"
         tools:layout="@layout/fragment_company" />
 

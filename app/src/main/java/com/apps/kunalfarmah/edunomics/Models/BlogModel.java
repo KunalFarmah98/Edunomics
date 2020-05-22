@@ -1,4 +1,4 @@
-package com.apps.kunalfarmah.edunomics;
+package com.apps.kunalfarmah.edunomics.Models;
 
 import android.graphics.drawable.Drawable;
 

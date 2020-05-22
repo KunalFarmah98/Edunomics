@@ -1,4 +1,4 @@
-package com.apps.kunalfarmah.edunomics.ui;
+package com.apps.kunalfarmah.edunomics.Fragments;
 
 import android.os.Bundle;
 
@@ -10,8 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.apps.kunalfarmah.edunomics.DataAdapter;
-import com.apps.kunalfarmah.edunomics.DataModel;
+import com.apps.kunalfarmah.edunomics.Adapters.DataAdapter;
+import com.apps.kunalfarmah.edunomics.Models.DataModel;
 import com.apps.kunalfarmah.edunomics.R;
 
 import java.util.ArrayList;
