@@ -1,5 +1,6 @@
 package com.apps.kunalfarmah.edunomics.Chat;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,11 +12,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -48,6 +51,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * A common chat room for students to discuss their problems and questions and anyone can
+ * answer them using firebase
+ * The app is currently in developer mode on the console to facitlite easy error recovery
+ * Can be converted to a private room chat by using additional components of firebase database
+ * Users can share images of their questions as well along with codes/statements for better
+ * understanding
+ */
 public class ChatActivity extends AppCompatActivity {
 
     private static final String TAG = "ChatActivity";
@@ -64,6 +75,7 @@ public class ChatActivity extends AppCompatActivity {
     private ImageButton mPhotoPickerButton;
     private EditText mMessageEditText;
     private Button mSendButton;
+    private TextView loading;
 
     private String mUsername;
 
@@ -104,15 +116,15 @@ public class ChatActivity extends AppCompatActivity {
         mPhotoPickerButton = (ImageButton) findViewById(R.id.photoPickerButton);
         mMessageEditText = (EditText) findViewById(R.id.messageEditText);
         mSendButton = (Button) findViewById(R.id.sendButton);
+        loading = findViewById(R.id.loading);
 
         // Initialize message ListView and its adapter
         final List<FriendlyMessage> friendlyMessages = new ArrayList<>();
+
         mMessageAdapter = new MessageAdapter(this, R.layout.item_message, friendlyMessages);
         mMessageListView.setAdapter(mMessageAdapter);
-
-        // Initialize progress bar
-        mProgressBar.setVisibility(ProgressBar.INVISIBLE);
-
+        mMessageListView.smoothScrollToPosition(mMessageAdapter.getCount() - 1);
+        mMessageListView.setScrollingCacheEnabled(true);
         // ImagePickerButton shows an image picker to upload a image for a message
         mPhotoPickerButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -158,6 +170,9 @@ public class ChatActivity extends AppCompatActivity {
 
                 //  Clear input box
                 mMessageEditText.setText("");
+                // hiding keyboard after sending message
+                InputMethodManager inputManager = (InputMethodManager) getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
             }
         });
 
@@ -189,6 +204,9 @@ public class ChatActivity extends AppCompatActivity {
                                     .createSignInIntentBuilder()
                                     .setIsSmartLockEnabled(false)
                                     .setAvailableProviders(providers)
+                                    .setLogo(R.drawable.edunomics)
+                                    .setIsSmartLockEnabled(true)
+                                    .setTheme(R.style.LoginTheme)
                                     .build(),
                             RC_SIGN_IN);
 
@@ -220,7 +238,7 @@ public class ChatActivity extends AppCompatActivity {
         Map<String, Object> defaultConfigMap = new HashMap<>();
         defaultConfigMap.put(FRIENDLY_MSG_LENGTH_KEY, DEFAULT_MSG_LENGTH_LIMIT);
         mFirebaseRemoteConfig.setDefaults(defaultConfigMap);
-        // fetching the changes aafter settign defaults
+        // fetching the changes after setting defaults
         fetchConfig();
     }
 
@@ -252,8 +270,6 @@ public class ChatActivity extends AppCompatActivity {
         }
     }
 
-
-    // this method deals with all the after effects fo an activity  started by startActivity
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -309,11 +325,16 @@ public class ChatActivity extends AppCompatActivity {
             mChildEventListener = new ChildEventListener() {
                 @Override
                 public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
+                    mProgressBar.setVisibility(View.VISIBLE);
+                    loading.setVisibility(View.VISIBLE);
                     FriendlyMessage friendlyMessage = dataSnapshot.getValue(FriendlyMessage.class);
                     // the data snapshot will get deserialised to the type of friendly message obj
                     mMessageAdapter.add(friendlyMessage);
+                    mMessageAdapter.notifyDataSetChanged();
+                    mMessageListView.smoothScrollToPosition(mMessageAdapter.getCount());
                     //the message is addded to our adapter
+                    mProgressBar.setVisibility(View.GONE);
+                    loading.setVisibility(View.GONE);
 
                 }
 

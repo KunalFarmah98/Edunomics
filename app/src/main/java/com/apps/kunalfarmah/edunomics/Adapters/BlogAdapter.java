@@ -22,12 +22,13 @@ import java.util.ArrayList;
 public class BlogAdapter extends RecyclerView.Adapter<BlogAdapter.BlogViewHolder> {
 
     Context mcontext;
-    ArrayList<BlogModel>data;
+    ArrayList<BlogModel> data;
     String type;
-    public BlogAdapter(Context mcontext, ArrayList<BlogModel> list, String type){
-        this.mcontext=mcontext;
-        this.data=list;
-        this.type=type;
+
+    public BlogAdapter(Context mcontext, ArrayList<BlogModel> list, String type) {
+        this.mcontext = mcontext;
+        this.data = list;
+        this.type = type;
     }
 
     @NonNull
@@ -40,10 +41,9 @@ public class BlogAdapter extends RecyclerView.Adapter<BlogAdapter.BlogViewHolder
     @Override
     public void onBindViewHolder(@NonNull final BlogViewHolder holder, int position) {
         BlogModel item = data.get(position);
-        if(item.getVidlinks().isEmpty()) {
+        if (item.getVidlinks().isEmpty()) {
             holder.vids.setVisibility(View.GONE);
-        }
-        else
+        } else
             holder.vids.setVisibility(View.VISIBLE);
 
         holder.img.setImageDrawable(item.getImg());
@@ -52,7 +52,7 @@ public class BlogAdapter extends RecyclerView.Adapter<BlogAdapter.BlogViewHolder
         holder.date.setText(item.getDate());
         holder.stitle.setText(item.getStitle());
         ArrayList<String> links = item.getVidlinks();
-        if(links.size()==1)holder.ib2.setVisibility(View.GONE);
+        if (links.size() == 1) holder.ib2.setVisibility(View.GONE);
         final String l1 = links.get(0);
         final String l2 = links.get(1);
 
@@ -83,10 +83,11 @@ public class BlogAdapter extends RecyclerView.Adapter<BlogAdapter.BlogViewHolder
     }
 
     public class BlogViewHolder extends RecyclerView.ViewHolder {
-        TextView title,info,stitle,date;
+        TextView title, info, stitle, date;
         ImageView img;
         LinearLayout vids;
-        ImageButton ib1,ib2;
+        ImageButton ib1, ib2;
+
         public BlogViewHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.head);

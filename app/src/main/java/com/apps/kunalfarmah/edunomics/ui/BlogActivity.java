@@ -34,6 +34,9 @@ public class BlogActivity extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blog);
 
+        /**
+         * Setting Edunomics Logo in Action Bar
+         **/
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         androidx.appcompat.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayOptions(actionBar.getDisplayOptions()
@@ -51,7 +54,6 @@ public class BlogActivity extends AppCompatActivity implements AdapterView.OnIte
 
         rv = findViewById(R.id.recycler);
         spinner = findViewById(R.id.category);
-        // Spinner click listener
         spinner.setOnItemSelectedListener(this);
 
         // Spinner Drop down elements
@@ -60,18 +62,13 @@ public class BlogActivity extends AppCompatActivity implements AdapterView.OnIte
         categories.add("All Available Categories");
         categories.add("Web Development");
 
-
-        // Creating adapter for spinner
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
-
-        // Drop down layout style - list view with radio button
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        // attaching data adapter to spinner
         spinner.setAdapter(dataAdapter);
-        // ALL THIS DATA MUT BE FETHED VIA API IN A VIEWMODEL FOLLOWING THE MVVM ARCHITECTURE
-        // BUT HARD CODING IT HERE FOR SIMPLICITY AND NOT USING MVVM TO PREVENT UNNECESSARY CLASS
-        // CREATION AS I CAN'T USE IT AS API IS NOT DEFINED
+        /** ALL THIS DATA MUT BE FETCHED VIA API IN A VIEWMODEL FOLLOWING THE MVVM ARCHITECTURE
+         * BUT HARD CODING IT HERE FOR SIMPLICITY AND NOT USING MVVM TO PREVENT UNNECESSARY CLASS
+         * CREATION AS I WON'T USE IT AS API IS NOT DEFINED.
+         **/
         buildAdapter();
         rv.setLayoutManager(new LinearLayoutManager(this));
         rv.setAdapter(mAdapter);
@@ -107,16 +104,18 @@ public class BlogActivity extends AppCompatActivity implements AdapterView.OnIte
 
         // Showing selected spinner item
         //Toast.makeText(adapterView.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
-        // A method of ViewModel would be called here to change the adapter contents using MVVM Architecture
-        // and only load blogs of that categories
-        // Currently hardcoded as only one category is available.
+        /** A method of ViewModel would be called here to change the adapter contents using MVVM Architecture
+         * and only load blogs of that categories
+         * Currently hardcoded as only one category is available.
+         **/
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
         String item = "All";
-        // A method of ViewModel would be called here to change the adapter contents using MVVM Architecture
-        // and load all blogs for all categories.
-        // Currently hardcoded as only one category is available.
+        /** A method of ViewModel would be called here to change the adapter contents using MVVM Architecture
+         *  and load all blogs for all categories.
+         *  Currently hardcoded as only one category is available.
+         **/
     }
 }

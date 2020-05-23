@@ -36,7 +36,7 @@ public class DataModel {
         this.info = info;
     }
 
-    private String title,info;
+    private String title, info;
 
 
 }

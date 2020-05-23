@@ -27,13 +27,16 @@ public class InitiativesFragment extends Fragment {
 
     RecyclerView rv;
     DataAdapter mAdapter;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v =  inflater.inflate(R.layout.fragment_initiatives, container, false);
+        View v = inflater.inflate(R.layout.fragment_initiatives, container, false);
         rv = v.findViewById(R.id.recycler);
 
-        // creating adapter list here, Ideally it should me made in a viewmodel and fetched via api
+        /**
+         *  creating adapter list here, Ideally it should me made in a viewmodel and fetched via api
+         **/
         buildAdapter();
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         rv.setAdapter(mAdapter);
@@ -41,16 +44,16 @@ public class InitiativesFragment extends Fragment {
         return v;
     }
 
-    void buildAdapter(){
+    void buildAdapter() {
         ArrayList<DataModel> data = new ArrayList<>();
         data.add(new DataModel(getResources().getDrawable(R.drawable.initiatives),
-                "","Scouting 50 of the aspiring minds, willing to achieve excellence." +
+                "", "Scouting 50 of the aspiring minds, willing to achieve excellence." +
                 "An initiative to provide world-class training to 50 talented students with serious " +
                 "aspirations to achieve their goal of success to work in challenging environment and " +
                 "grow fast"));
         data.add(new DataModel(getResources().getDrawable(R.drawable.wenestor),
-                "Wenestor","Get help on improving your business scenario right from purchase to Marketing."));
-        mAdapter = new DataAdapter(getContext(),data,"initiatives");
+                "Wenestor", "Get help on improving your business scenario right from purchase to Marketing."));
+        mAdapter = new DataAdapter(getContext(), data, "initiatives");
 
     }
 }

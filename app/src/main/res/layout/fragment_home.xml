@@ -5,85 +5,103 @@
     android:layout_height="match_parent"
     android:background="@android:color/white"
     tools:context=".Fragments.HomeFragment">
+
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="match_parent">
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/welcome"
+
+        <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:gravity="center"
-            android:padding="20dp"
-            android:text="WELCOME TO THE WORLD OF EDUNOMICS"
-            android:textAlignment="viewStart"
-            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-            android:textColor="@android:color/black"
-            android:textSize="40sp" />
-        
-        <ImageView
-            android:id="@+id/img"
-            android:layout_below="@id/welcome"
-            android:layout_width="200dp"
-            android:layout_centerHorizontal="true"
-            android:layout_height="200dp"
-            android:background="@drawable/welcome"/>
+            android:layout_height="wrap_content">
 
-
-        <EditText
-            android:id="@+id/query"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/img"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="10dp"
-            android:hint="Enter Your Query"
-            android:padding="20dp" />
-
-        <Button
-            android:id="@+id/search"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/query"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/bt_gradient"
-            android:padding="10dp"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:text="Search"
-            android:textAllCaps="false"
-            android:textColor="#ffffff" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/search"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="10dp"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/career"
+            <TextView
+                android:id="@+id/welcome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:background="#2196f3"
-                android:text="CAREER"
-                android:textColor="#ffffff" />
+                android:gravity="center"
+                android:padding="20dp"
+                android:text="WELCOME TO THE WORLD OF EDUNOMICS"
+                android:textAlignment="viewStart"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:textColor="@android:color/black"
+                android:textSize="40sp" />
+
+            <ImageView
+                android:id="@+id/img"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_below="@id/welcome"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/welcome" />
+
+
+            <EditText
+                android:id="@+id/query"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/img"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="10dp"
+                android:hint="Enter Your Query"
+                android:padding="20dp"
+                android:visibility="gone" />
+
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/img"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:ems="10"
+                android:hint="Enter Your Query" />
 
             <Button
-                android:id="@+id/skill"
+                android:id="@+id/search"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/autoCompleteTextView"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/bt_gradient"
+                android:padding="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="Search"
+                android:textAllCaps="false"
+                android:textColor="#ffffff" />
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/search"
+                android:layout_centerHorizontal="true"
                 android:layout_margin="10dp"
-                android:background="#2196f3"
-                android:text="SKILL"
-                android:textColor="#ffffff" />
-        </LinearLayout>
-    </RelativeLayout>
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/career"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="#2196f3"
+                    android:text="CAREER"
+                    android:textColor="#ffffff" />
+
+                <Button
+                    android:id="@+id/skill"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="#2196f3"
+                    android:text="SKILL"
+                    android:textColor="#ffffff" />
+            </LinearLayout>
+        </RelativeLayout>
     </ScrollView>
 
 

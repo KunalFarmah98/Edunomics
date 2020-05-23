@@ -31,9 +31,12 @@ public class Company extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v =  inflater.inflate(R.layout.fragment_company, container, false);
+        View v = inflater.inflate(R.layout.fragment_company, container, false);
 
         rv = v.findViewById(R.id.recycler);
+        /**
+         * Building the items of the list in FAQ's. Can be updated with time
+         */
         buildAdapter();
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         rv.setAdapter(mAdapter);
@@ -41,8 +44,8 @@ public class Company extends Fragment {
     }
 
 
-    void buildAdapter(){
-        ArrayList<Pair<String,String>> data = new ArrayList<>();
+    void buildAdapter() {
+        ArrayList<Pair<String, String>> data = new ArrayList<>();
 
         data.add(new Pair<String, String>("Is there a cost to hire students from edunomics?",
                 "No. We are completely open sourced. We just emphasis on the companies to give the best in the market packages for our students, since they are of the utmost quality and talent"));
@@ -61,6 +64,6 @@ public class Company extends Fragment {
         data.add(new Pair<String, String>("What if there is an issue with an EDUNOMICS hire?",
                 "Our active support team is always there to look and resolve any issues if they may arise to the best of both the parties/’s needs. Edunomics gives quick responses on such a situation and makes sure that not either of the parties never gets affected by it in any way. However, our strategic system is tried and tested, issue free, and paved in such a way that it works for the smooth functioning of students and industry experts."));
 
-        mAdapter = new FAQAdapter(getContext(),data);
+        mAdapter = new FAQAdapter(getContext(), data);
     }
 }

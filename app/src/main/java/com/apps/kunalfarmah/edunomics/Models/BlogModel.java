@@ -6,8 +6,8 @@ import java.util.ArrayList;
 
 public class BlogModel {
     Drawable img;
-    String title,date,stitle,info;
-    ArrayList<String>vidlinks;
+    String title, date, stitle, info;
+    ArrayList<String> vidlinks;
 
     public Drawable getImg() {
         return img;

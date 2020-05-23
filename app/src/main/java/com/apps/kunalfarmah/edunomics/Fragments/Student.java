@@ -27,28 +27,32 @@ public class Student extends Fragment {
 
     RecyclerView rv;
     FAQAdapter mAdapter;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v =  inflater.inflate(R.layout.fragment_student, container, false);
+        View v = inflater.inflate(R.layout.fragment_student, container, false);
 
         rv = v.findViewById(R.id.recycler);
+        /**
+         * Building the items of the list in FAQ's. Can be updated with time
+         */
         buildAdapter();
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         rv.setAdapter(mAdapter);
         return v;
     }
 
-    void buildAdapter(){
-        ArrayList<Pair<String,String>> data = new ArrayList<>();
+    void buildAdapter() {
+        ArrayList<Pair<String, String>> data = new ArrayList<>();
         data.add(new Pair<String, String>("How does Edunomics work?",
                 "We at edunomics basically combine technological expertise with business intelligence" +
-                " and deliver it to those who are in need, connecting the students with real world " +
-                "industry experts who will give the right training and development needed with accordance " +
-                "to the real world experiences. Edunomics works by providing online textbook depositories, " +
-                "helps to develop and exercise skills by providing different courses of their domain of " +
-                "interest. Differentiated lessons along with diagnostic tools we are completely open sourced."));
+                        " and deliver it to those who are in need, connecting the students with real world " +
+                        "industry experts who will give the right training and development needed with accordance " +
+                        "to the real world experiences. Edunomics works by providing online textbook depositories, " +
+                        "helps to develop and exercise skills by providing different courses of their domain of " +
+                        "interest. Differentiated lessons along with diagnostic tools we are completely open sourced."));
         data.add(new Pair<String, String>("Who is Edunomics for?",
                 "This platform is for hardcore enthusiasts who are eager to go through intensive extroverted teaching and learning process more closely related to their specific industry rather than theorotical, along with their batch of similar aspiring students to have a well interacted expert-student and student-student interactions. Edunomics belongs to every Student and Professor who wishes to benefit the human resource as a whole. Students who wish to empower themselves with the skill of knowledge, along with Professors interested in providing quality education to those in need, both have a place at Edunomics."));
 
@@ -62,7 +66,7 @@ public class Student extends Fragment {
                 "We don't obtain any sort of deposit from our students or professors."));
         data.add(new Pair<String, String>("Do I have to accept my offer from hiring partners??",
                 "Not necessarily, you can always choose to decline the offer according to the best of your wishes. However, do realize that Edunomics plays a vital role in the hiring process by referring to the companies with the best, talented and the most innovative workforce."));
-        mAdapter = new FAQAdapter(getContext(),data);
+        mAdapter = new FAQAdapter(getContext(), data);
 
     }
 }

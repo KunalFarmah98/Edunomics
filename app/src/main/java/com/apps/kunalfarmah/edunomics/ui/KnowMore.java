@@ -16,13 +16,16 @@ import android.widget.ImageView;
 import com.apps.kunalfarmah.edunomics.R;
 
 public class KnowMore extends AppCompatActivity {
-    Button an,an2;
+    Button an, an2;
+
     @SuppressLint("WrongConstant")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_know_more);
-
+        /**
+         * Setting Edunomics Logo in Action Bar
+         **/
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         androidx.appcompat.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayOptions(actionBar.getDisplayOptions()
@@ -39,7 +42,7 @@ public class KnowMore extends AppCompatActivity {
         actionBar.setCustomView(imageView);
 
         an = findViewById(R.id.applynow);
-        an2  = findViewById(R.id.apply);
+        an2 = findViewById(R.id.apply);
 
         an.setOnClickListener(new View.OnClickListener() {
             @Override

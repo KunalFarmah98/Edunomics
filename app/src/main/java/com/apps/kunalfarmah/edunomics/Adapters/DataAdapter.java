@@ -22,12 +22,13 @@ import java.util.ArrayList;
 
 public class DataAdapter extends RecyclerView.Adapter<DataAdapter.DataViewHolder> {
     Context mcontext;
-    ArrayList<DataModel>data;
+    ArrayList<DataModel> data;
     String type;
-    public DataAdapter(Context mcontext, ArrayList<DataModel> list, String type){
-        this.mcontext=mcontext;
-        this.data=list;
-        this.type=type;
+
+    public DataAdapter(Context mcontext, ArrayList<DataModel> list, String type) {
+        this.mcontext = mcontext;
+        this.data = list;
+        this.type = type;
     }
 
     @NonNull
@@ -40,15 +41,15 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.DataViewHolder
     @Override
     public void onBindViewHolder(@NonNull final DataViewHolder holder, int position) {
         DataModel item = data.get(position);
-        if(type=="initiatives"){
+        // know more and apply now only visible in initiatives fragment
+        if (type == "initiatives") {
             holder.buttons.setVisibility(View.VISIBLE);
             holder.title.setVisibility(View.GONE);
-            if(item.getTitle().equals("Wenestor")){
+            if (item.getTitle().equals("Wenestor")) {
                 holder.an.setVisibility(View.GONE);
                 holder.km.setText("Wenestor");
             }
-        }
-        else holder.buttons.setVisibility(View.GONE);
+        } else holder.buttons.setVisibility(View.GONE);
 
         holder.img.setImageDrawable(item.getImg());
         holder.title.setText(item.getTitle());
@@ -57,13 +58,12 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.DataViewHolder
         holder.km.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(holder.km.getText().toString().equals("Wenestor")){
+                if (holder.km.getText().toString().equals("Wenestor")) {
                     Uri uri = Uri.parse("http://wenestor.herokuapp.com/");
                     Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                     mcontext.startActivity(intent);
-                }
-                else{
-                    mcontext.startActivity(new Intent(mcontext,KnowMore.class));
+                } else {
+                    mcontext.startActivity(new Intent(mcontext, KnowMore.class));
                 }
             }
         });
@@ -85,10 +85,11 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.DataViewHolder
     }
 
     public class DataViewHolder extends RecyclerView.ViewHolder {
-        TextView title,info;
+        TextView title, info;
         ImageView img;
-        Button km,an;
+        Button km, an;
         LinearLayout buttons;
+
         public DataViewHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.title);

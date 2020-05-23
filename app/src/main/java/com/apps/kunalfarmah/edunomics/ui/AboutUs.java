@@ -1,33 +1,36 @@
 package com.apps.kunalfarmah.edunomics.ui;
 
-import androidx.appcompat.app.ActionBarDrawerToggle;
+
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.navigation.ui.AppBarConfiguration;
+
 
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.content.Intent;
-import android.net.Uri;
+
 import android.os.Bundle;
 import android.view.Gravity;
-import android.view.Menu;
+
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
 import com.apps.kunalfarmah.edunomics.R;
-import com.apps.kunalfarmah.edunomics.ui.KnowMore;
+
 
 public class AboutUs extends AppCompatActivity {
 
-    @SuppressLint("WrongConstant")
     Button km;
+
+    @SuppressLint("WrongConstant")
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_us);
 
+        /**
+         * Setting Edunomics Logo in Action Bar
+        **/
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         androidx.appcompat.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayOptions(actionBar.getDisplayOptions()
@@ -47,9 +50,6 @@ public class AboutUs extends AppCompatActivity {
         km.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Uri uri = Uri.parse("https://edunomics.in/knowmore");
-//                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-//                startActivity(intent);
                 startActivity(new Intent(getApplicationContext(), KnowMore.class));
             }
         });

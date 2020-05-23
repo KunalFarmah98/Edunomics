@@ -34,7 +34,9 @@ public class ImpactFragment extends Fragment {
         View v =  inflater.inflate(R.layout.fragment_impact, container, false);
         rv = v.findViewById(R.id.recycler);
 
-        // creating adapter list here, Ideally it should me made in a viewmodel and fetched via api
+        /**
+         *  creating adapter list here, Ideally it should me made in a viewmodel and fetched via api
+         **/
         buildAdapter();
         rv.setLayoutManager(new GridLayoutManager(getContext(),2));
         rv.setAdapter(mAdapter);

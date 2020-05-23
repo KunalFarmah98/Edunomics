@@ -19,13 +19,14 @@ import java.util.ArrayList;
 
 public class FAQAdapter extends RecyclerView.Adapter<FAQAdapter.FAQViewHolder> {
 
-    ArrayList<Pair<String,String>> data;
+    ArrayList<Pair<String, String>> data;
     Context mContext;
 
-    public FAQAdapter(Context context, ArrayList<Pair<String,String>> list){
-        mContext=context;
-        data=list;
+    public FAQAdapter(Context context, ArrayList<Pair<String, String>> list) {
+        mContext = context;
+        data = list;
     }
+
     @NonNull
     @Override
     public FAQViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -35,30 +36,27 @@ public class FAQAdapter extends RecyclerView.Adapter<FAQAdapter.FAQViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull final FAQViewHolder holder, int position) {
-        String title= data.get(position).first;
+        String title = data.get(position).first;
         String info = data.get(position).second;
         holder.title.setText(title);
         holder.expanded.setText(info);
         holder.expanded.setVisibility(View.GONE);
 
+        // animating expansion and collapse of textview
         holder.ly.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(holder.expanded.getVisibility()==View.GONE){
+                if (holder.expanded.getVisibility() == View.GONE) {
                     FAQActivity.expand(holder.expanded);
-//                    holder.expanded.setVisibility(View.VISIBLE);
-                }
-
-                else {
+                } else {
                     FAQActivity.collapse(holder.expanded);
-                    //holder.expanded.setVisibility(View.GONE);
                 }
             }
         });
         holder.expand.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(holder.expanded.getVisibility()==View.GONE)
+                if (holder.expanded.getVisibility() == View.GONE)
                     holder.expanded.setVisibility(View.VISIBLE);
                 else holder.expanded.setVisibility(View.GONE);
             }
@@ -71,9 +69,10 @@ public class FAQAdapter extends RecyclerView.Adapter<FAQAdapter.FAQViewHolder> {
     }
 
     public class FAQViewHolder extends RecyclerView.ViewHolder {
-        TextView title,expanded;
+        TextView title, expanded;
         ImageButton expand;
         LinearLayout ly;
+
         public FAQViewHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.title);

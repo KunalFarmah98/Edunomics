@@ -34,7 +34,9 @@ public class OpportunitiesFragment extends Fragment {
         View v =  inflater.inflate(R.layout.fragment_opportunities, container, false);
 
         rv = v.findViewById(R.id.recycler);
-        // creating adapter list here, Ideally it should me made in a viewmodel and fetched via api
+        /**
+         *  creating adapter list here, Ideally it should me made in a viewmodel and fetched via api
+         **/
         bildAdapter();
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         rv.setAdapter(madapter);

@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private AppBarConfiguration mAppBarConfiguration;
     DrawerLayout drawer;
 
-    ImageButton fb,insta,twt,lin;
+    ImageButton fb, insta, twt, lin;
 
     @SuppressLint("WrongConstant")
     @Override
@@ -46,7 +46,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        /**
+         *  Setting Edunomics Logo in Action Bar
+         **/
         androidx.appcompat.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayOptions(actionBar.getDisplayOptions()
                 | ActionBar.DISPLAY_SHOW_CUSTOM);
@@ -63,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
-        BottomNavigationView bottomNavView=findViewById(R.id.bottom_nav);
+        BottomNavigationView bottomNavView = findViewById(R.id.bottom_nav);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -77,7 +79,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        //NavigationUI.setupWithNavController(navigationView, navController);
         NavigationUI.setupWithNavController(bottomNavView, navController);
 
         navigationView.setNavigationItemSelectedListener(this);
@@ -91,7 +92,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onClick(View view) {
                 Uri uri = Uri.parse("https://www.facebook.com/edunomics2020/");
-                Intent intent = new Intent(Intent.ACTION_VIEW,uri);
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
             }
         });
@@ -99,7 +100,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onClick(View view) {
                 Uri uri = Uri.parse("https://www.instagram.com/edunomics2020/");
-                Intent intent = new Intent(Intent.ACTION_VIEW,uri);
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
             }
         });
@@ -107,7 +108,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onClick(View view) {
                 Uri uri = Uri.parse("https://twitter.com/Edunomics2");
-                Intent intent = new Intent(Intent.ACTION_VIEW,uri);
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
             }
         });
@@ -115,28 +116,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onClick(View view) {
                 Uri uri = Uri.parse("https://www.linkedin.com/company/edunomics/");
-                Intent intent = new Intent(Intent.ACTION_VIEW,uri);
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
             }
         });
-
 
 
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        if(drawer.isDrawerOpen(GravityCompat.START))
+        if (drawer.isDrawerOpen(GravityCompat.START))
             drawer.closeDrawer(GravityCompat.START);
 
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.nav_about:
                 startActivity(new Intent(this, AboutUs.class));
                 break;
@@ -144,9 +143,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(new Intent(this, FAQActivity.class));
                 break;
             case R.id.nav_Blog:
-//                Uri uri = Uri.parse("https://edunomics.in/allblogs");
-//                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-//                startActivity(intent);
                 startActivity(new Intent(this, BlogActivity.class));
                 break;
             case R.id.nav_Wenestor:
@@ -160,10 +156,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(intent);
                 break;
             case R.id.nav_privacypolicy:
-                Toast.makeText(this,"Privacy Policy will appear here (not available on website",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Privacy Policy will appear here (not available on website", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_termsofuse:
-                Toast.makeText(this,"Terms of Use will appear here (not available on website",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Terms of Use will appear here (not available on website", Toast.LENGTH_SHORT).show();
 
                 break;
             case R.id.nav_joinus:
@@ -174,22 +170,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_Tech:
                 uri = Uri.parse("http://tech.edunomics.in/");
-                intent = new Intent(Intent.ACTION_VIEW,uri);
+                intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
                 break;
 
             case R.id.nav_chat:
                 startActivity(new Intent(this, ChatActivity.class));
 
-
         }
         return true;
     }
 
-//    @Override
-//    public boolean onSupportNavigateUp() {
-//        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-//        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
-//                || super.onSupportNavigateUp();
-//    }
 }
