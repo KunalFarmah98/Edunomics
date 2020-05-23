@@ -7,49 +7,41 @@
     android:layout_marginLeft="@dimen/activity_horizontal_margin"
     android:layout_marginTop="5dp"
     android:layout_marginEnd="16dp"
+    android:layout_marginBottom="20dp"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/photosenderTextViewL"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
-        android:visibility="gone"
-        android:layout_gravity="left"
-        android:layout_weight="0"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        tools:text="Name" />
-    <TextView
-        android:id="@+id/photosenderTextViewR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:layout_marginEnd="10dp"
-        android:layout_gravity="end"
-        android:layout_weight="0"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        tools:text="Name" />
+    <!--    <TextView-->
+    <!--        android:id="@+id/photosenderTextViewL"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginEnd="10dp"-->
+    <!--        android:visibility="gone"-->
+    <!--        android:layout_gravity="left"-->
+    <!--        android:layout_weight="0"-->
+    <!--        android:textAppearance="?android:attr/textAppearanceSmall"-->
+    <!--        tools:text="Name" />-->
+    <!--    <TextView-->
+    <!--        android:id="@+id/photosenderTextViewR"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:visibility="gone"-->
+    <!--        android:layout_marginEnd="10dp"-->
+    <!--        android:layout_gravity="end"-->
+    <!--        android:layout_weight="0"-->
+    <!--        android:textAppearance="?android:attr/textAppearanceSmall"-->
+    <!--        tools:text="Name" />-->
 
-    <ImageView
-        android:id="@+id/photoImageView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:layout_marginRight="16dp"
-        android:background="#123456"
-        android:visibility="gone" />
 
     <TextView
         android:id="@+id/usernameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
         android:layout_gravity="end"
+        android:layout_margin="5dp"
+        android:layout_marginEnd="10dp"
         android:layout_weight="0"
+        android:textSize="17sp"
+        android:textColor="@android:color/black"
         android:textAppearance="?android:attr/textAppearanceSmall"
         tools:text="Name" />
 
@@ -57,10 +49,10 @@
         android:id="@+id/messageUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="0"
         android:layout_gravity="end"
-        android:maxWidth="200dp"
+        android:layout_weight="0"
         android:background="@drawable/round_button_dark"
+        android:maxWidth="200dp"
         android:padding="10dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#ffffff"
@@ -71,26 +63,32 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="left"
+        android:textSize="17sp"
+        android:textColor="@android:color/black"
+        android:layout_margin="5dp"
         android:layout_marginEnd="10dp"
         android:layout_weight="0"
         android:textAppearance="?android:attr/textAppearanceSmall"
         tools:text="Name" />
+
     <TextView
         android:id="@+id/messageBearer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="left"
-        android:maxWidth="200dp"
         android:layout_weight="0"
         android:background="@drawable/round_button_pink"
+        android:maxWidth="200dp"
         android:padding="10dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#ffffff"
         tools:text="Message" />
 
-
-
-
+    <ImageView
+        android:id="@+id/photoImageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true" />
 
 
 </LinearLayout>

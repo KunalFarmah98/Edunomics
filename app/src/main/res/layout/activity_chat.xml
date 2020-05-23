@@ -3,32 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="5dp"
     tools:context="com.apps.kunalfarmah.edunomics.Chat.ChatActivity">
 
-    <TextView
-        android:id="@+id/bearer"
-        style="@style/TextAppearance.AppCompat.Headline"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
-        android:padding="10dp"
-        android:text="Contact"
-        android:textColor="@android:color/white"
-        android:textSize="20sp"
-        android:visibility="gone" />
 
-    <ListView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/messageRecycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/linearLayout"
-        android:layout_below="@id/bearer"
-        android:divider="@null"
-        android:dividerHeight="0dp"
-        android:stackFromBottom="true"
-        android:transcriptMode="alwaysScroll"
-        tools:listitem="@layout/item_message" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        app:stackFromEnd="true"
+        android:layout_above="@+id/linearLayout"/>
 
     <LinearLayout
         android:id="@+id/linearLayout"

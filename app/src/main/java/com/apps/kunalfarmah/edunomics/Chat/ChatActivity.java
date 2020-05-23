@@ -24,6 +24,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.apps.kunalfarmah.edunomics.R;
@@ -70,13 +71,15 @@ public class ChatActivity extends AppCompatActivity {
     private static int RC_PHOTO_PICKER = 2;
     public static final String FRIENDLY_MSG_LENGTH_KEY = "friendly_msg_length";
 
-    private ListView mMessageListView;
+    private RecyclerView mMessageListView;
     private MessageAdapter mMessageAdapter;
     private ProgressBar mProgressBar;
     private ImageButton mPhotoPickerButton;
     private EditText mMessageEditText;
     private Button mSendButton;
     private TextView loading;
+
+    private ArrayList<FriendlyMessage> friendlyMessages;
 
     private String mUsername;
 
@@ -120,12 +123,14 @@ public class ChatActivity extends AppCompatActivity {
         loading = findViewById(R.id.loading);
 
         // Initialize message ListView and its adapter
-        final List<FriendlyMessage> friendlyMessages = new ArrayList<>();
+        friendlyMessages = new ArrayList<>();
 
-        mMessageAdapter = new MessageAdapter(this, R.layout.item_message, friendlyMessages);
+        mMessageAdapter = new MessageAdapter(this,friendlyMessages);
         mMessageListView.setAdapter(mMessageAdapter);
-        mMessageListView.smoothScrollToPosition(mMessageAdapter.getCount() - 1);
-        mMessageListView.setScrollingCacheEnabled(true);
+        mMessageListView.setLayoutManager(new LinearLayoutManager(this));
+        mMessageListView.scrollToPosition(mMessageAdapter.getItemCount());
+        mMessageListView.setItemViewCacheSize(100);
+
         // ImagePickerButton shows an image picker to upload a image for a message
         mPhotoPickerButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -216,7 +221,8 @@ public class ChatActivity extends AppCompatActivity {
                     }
 
                     //clear the chats once signed out
-                    mMessageAdapter.clear();
+                    friendlyMessages.clear();
+                    mMessageAdapter.notifyDataSetChanged();
                     detachDatabaseReadListener();
                 }
 
@@ -332,9 +338,10 @@ public class ChatActivity extends AppCompatActivity {
                     loading.setVisibility(View.VISIBLE);
                     FriendlyMessage friendlyMessage = dataSnapshot.getValue(FriendlyMessage.class);
                     // the data snapshot will get deserialised to the type of friendly message obj
-                    mMessageAdapter.add(friendlyMessage);
-                    mMessageAdapter.notifyDataSetChanged();
-                    mMessageListView.smoothScrollToPosition(mMessageAdapter.getCount());
+                    friendlyMessages.add(friendlyMessage);
+                    mMessageAdapter.notifyItemInserted(mMessageAdapter.getItemCount());
+                    mMessageListView.smoothScrollToPosition(mMessageAdapter.getItemCount());
+                    //mMessageAdapter.notifyDataSetChanged();
                     //the message is addded to our adapter
                     mProgressBar.setVisibility(View.GONE);
                     loading.setVisibility(View.GONE);
@@ -384,7 +391,8 @@ public class ChatActivity extends AppCompatActivity {
     private void onSignedOutDestroyer() {
         mUsername = ANONYMOUS;
         // clear the chats once signed out
-        mMessageAdapter.clear();
+        friendlyMessages.clear();
+        mMessageAdapter.notifyDataSetChanged();
         detachDatabaseReadListener();
     }
 

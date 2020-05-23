@@ -8,6 +8,7 @@ import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -48,7 +49,7 @@ public class BlogActivity extends AppCompatActivity implements AdapterView.OnIte
                 ActionBar.LayoutParams.WRAP_CONTENT,
                 ActionBar.LayoutParams.WRAP_CONTENT, Gravity.RIGHT
                 | Gravity.CENTER_VERTICAL);
-        layoutParams.rightMargin = 40;
+
         imageView.setLayoutParams(layoutParams);
         actionBar.setCustomView(imageView);
 
@@ -72,6 +73,12 @@ public class BlogActivity extends AppCompatActivity implements AdapterView.OnIte
         buildAdapter();
         rv.setLayoutManager(new LinearLayoutManager(this));
         rv.setAdapter(mAdapter);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
     }
 
     @Override

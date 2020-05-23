@@ -1,89 +1,113 @@
 package com.apps.kunalfarmah.edunomics.Chat;
 
-import android.app.Activity;
+
 import android.content.Context;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.core.view.GravityCompat;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.apps.kunalfarmah.edunomics.R;
 import com.bumptech.glide.Glide;
 
-import java.util.List;
+import java.util.ArrayList;
 
-public class MessageAdapter extends ArrayAdapter<FriendlyMessage> {
-    public MessageAdapter(Context context, int resource, List<FriendlyMessage> objects) {
-        super(context, resource, objects);
+
+public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageViewHolder> {
+    private Context mContext;
+    public ArrayList<FriendlyMessage> list;
+
+    public MessageAdapter(Context context, ArrayList<FriendlyMessage> objects) {
+        mContext = context;
+        list = objects;
+    }
+
+    @NonNull
+    @Override
+    public MessageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(mContext).inflate(R.layout.item_message, parent, false);
+        return new MessageViewHolder(view);
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        if (convertView == null) {
-            convertView = ((Activity) getContext()).getLayoutInflater().inflate(R.layout.item_message, parent, false);
-        }
-
-        ImageView photoImageView = convertView.findViewById(R.id.photoImageView);
-        TextView um = convertView.findViewById(R.id.messageUser);
-        TextView bm = convertView.findViewById(R.id.messageBearer);
-        TextView userTextView = convertView.findViewById(R.id.usernameTextView);
-        TextView bearerTextView = convertView.findViewById(R.id.bearernameTextView);
-        TextView imagesendertvl = convertView.findViewById(R.id.photosenderTextViewL);
-        TextView imagesendertvr = convertView.findViewById(R.id.photosenderTextViewR);
-        imagesendertvl.setVisibility(View.GONE);
-        imagesendertvr.setVisibility(View.GONE);
-
-        FriendlyMessage message = getItem(position);
-
+    public void onBindViewHolder(@NonNull MessageViewHolder holder, int position) {
+        FriendlyMessage message = list.get(position);
+        holder.um.setVisibility(View.GONE);
+        holder.bm.setVisibility(View.GONE);
+        holder.bearerTextView.setVisibility(View.GONE);
+        holder.userTextView.setVisibility(View.GONE);
         boolean isPhoto = message.getPhotoUrl() != null;
         if (isPhoto) {
-            um.setVisibility(View.GONE);
-            bm.setVisibility(View.GONE);
-            bearerTextView.setVisibility(View.GONE);
-            userTextView.setVisibility(View.VISIBLE);
-            imagesendertvl.setText(message.getName());
-            imagesendertvr.setText(message.getName());
-            imagesendertvl.setVisibility(View.GONE);
-            imagesendertvr.setVisibility(View.GONE);
-
-            if(message.getName()==ChatActivity.mFirebaseAuth.getCurrentUser().getDisplayName()) {
-                imagesendertvr.setVisibility(View.GONE);
-                imagesendertvl.setVisibility(View.VISIBLE);
-
-            }
-            else {
-                imagesendertvl.setVisibility(View.GONE);
-                imagesendertvr.setVisibility(View.VISIBLE);
-            }
-
-            photoImageView.setVisibility(View.VISIBLE);
-            Glide.with(photoImageView.getContext())
-                    .load(message.getPhotoUrl())
-                    .into(photoImageView);
-        } else {
-            imagesendertvl.setVisibility(View.GONE);
-            imagesendertvr.setVisibility(View.GONE);
-            if (message.getName().equals(ChatActivity.mFirebaseAuth.getCurrentUser().getDisplayName())) {
-                um.setVisibility(View.VISIBLE);
-                userTextView.setVisibility(View.VISIBLE);
-                photoImageView.setVisibility(View.GONE);
-                bm.setVisibility(View.GONE);
-                bearerTextView.setVisibility(View.GONE);
-                um.setText(message.getText());
-                userTextView.setText(message.getName());
+            if (message.getName() .equals(ChatActivity.mFirebaseAuth.getCurrentUser().getDisplayName())){
+                holder.userTextView.setText(message.getName());
+                holder.userTextView.setVisibility(View.VISIBLE);
+                holder.userTextView.setGravity(Gravity.END);
+                holder.bearerTextView.setVisibility(View.GONE);
             } else {
-                bm.setVisibility(View.VISIBLE);
-                bearerTextView.setVisibility(View.VISIBLE);
-                photoImageView.setVisibility(View.GONE);
-                um.setVisibility(View.GONE);
-                userTextView.setVisibility(View.GONE);
-                bm.setText(message.getText());
-                bearerTextView.setText(message.getName());
+                holder.bearerTextView.setText(message.getName());
+                holder.bearerTextView.setVisibility(View.VISIBLE);
+                holder.bearerTextView.setGravity(Gravity.START);
+                holder.userTextView.setVisibility(View.GONE);
+            }
+            holder.photoImageView.setVisibility(View.VISIBLE);
+            Glide.with(mContext)
+                    .load(message.getPhotoUrl())
+                    .into(holder.photoImageView);
+        } else {
+            if (message.getName().equals(ChatActivity.mFirebaseAuth.getCurrentUser().getDisplayName())) {
+                holder.um.setText(message.getText());
+                holder.um.setVisibility(View.VISIBLE);
+                holder.um.setGravity(Gravity.END);
+                holder.userTextView.setText(message.getName());
+                holder.userTextView.setVisibility(View.VISIBLE);
+                holder.userTextView.setGravity(Gravity.END);
+
+                holder.photoImageView.setVisibility(View.GONE);
+                holder.bm.setVisibility(View.GONE);
+                holder.bearerTextView.setVisibility(View.GONE);
+
+            } else {
+                holder.bm.setText(message.getText());
+                holder.bm.setVisibility(View.VISIBLE);
+                holder.bm.setGravity(Gravity.START);
+                holder.bearerTextView.setText(message.getName());
+                holder.bearerTextView.setVisibility(View.VISIBLE);
+                holder.bearerTextView.setGravity(Gravity.START);
+
+                holder.photoImageView.setVisibility(View.GONE);
+                holder.um.setVisibility(View.GONE);
+                holder.userTextView.setVisibility(View.GONE);
+
             }
         }
+    }
 
+    @Override
+    public int getItemCount() {
+        return list.size();
+    }
 
-        return convertView;
+    public class MessageViewHolder extends RecyclerView.ViewHolder {
+        ImageView photoImageView;
+        TextView um;
+        TextView bm;
+        TextView userTextView;
+        TextView bearerTextView;
+
+        public MessageViewHolder(@NonNull View itemView) {
+            super(itemView);
+            photoImageView = itemView.findViewById(R.id.photoImageView);
+            um = itemView.findViewById(R.id.messageUser);
+            bm = itemView.findViewById(R.id.messageBearer);
+            userTextView = itemView.findViewById(R.id.usernameTextView);
+            bearerTextView = itemView.findViewById(R.id.bearernameTextView);
+        }
     }
 }

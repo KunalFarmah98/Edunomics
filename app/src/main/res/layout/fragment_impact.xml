@@ -20,7 +20,7 @@
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:gravity="center"
-            android:text="IMPACT OF EDUNOMICS ON ECONOMY"
+            android:text="IMPACT OF\nEDUNOMICS ON\n ECONOMY"
             android:textAlignment="center"
             android:textColor="@android:color/black"
             android:textSize="40sp"
