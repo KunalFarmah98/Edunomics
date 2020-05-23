@@ -23,7 +23,7 @@
             android:text="IMPACT OF\nEDUNOMICS ON\n ECONOMY"
             android:textAlignment="center"
             android:textColor="@android:color/black"
-            android:textSize="40sp"
+            android:textSize="35sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
