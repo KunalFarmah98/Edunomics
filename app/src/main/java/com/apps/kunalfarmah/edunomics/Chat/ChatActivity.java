@@ -59,7 +59,7 @@ import java.util.Map;
  * The app is currently in developer mode on the console to facitlite easy error recovery
  * Can be converted to a private room chat by using additional components of firebase database
  * Users can share images of their questions as well along with codes/statements for better
- * understanding
+ * understanding.
  */
 public class ChatActivity extends AppCompatActivity {
 
