@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Chat.ContactsActivity"></activity>
+        <activity android:name=".Chat.ContactsActivity"/>
         <activity android:name=".ui.BlogActivity" />
         <activity
             android:name=".ui.AboutUs"

@@ -16,17 +16,20 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:padding="10dp"
+        android:visibility="gone"
         style="@style/TextAppearance.AppCompat.Headline"
         android:textColor="@android:color/white"
         android:background="@color/colorPrimaryDark"
         android:text="Contact"/>
     <ListView
-        android:id="@+id/messageListView"
+        android:id="@+id/messageRecycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/linearLayout"
         android:stackFromBottom="true"
-        android:divider="@android:color/transparent"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:layout_below="@id/bearer"
         android:transcriptMode="alwaysScroll"
         tools:listitem="@layout/item_message"/>
 

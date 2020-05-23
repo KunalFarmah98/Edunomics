@@ -11,36 +11,31 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Adapter;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.apps.kunalfarmah.edunomics.BuildConfig;
 import com.apps.kunalfarmah.edunomics.R;
 import com.firebase.ui.auth.AuthUI;
-import com.firebase.ui.auth.data.model.User;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.BuildConfig;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings;
 import com.google.firebase.storage.FirebaseStorage;
@@ -55,14 +50,13 @@ import java.util.Map;
 
 public class ChatActivity extends AppCompatActivity {
 
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "ChatActivity";
 
     public static final String ANONYMOUS = "anonymous";
     public static final int DEFAULT_MSG_LENGTH_LIMIT = 1000;
     private static final int RC_SIGN_IN = 1;
     private static int RC_PHOTO_PICKER = 2;
     public static final String FRIENDLY_MSG_LENGTH_KEY = "friendly_msg_length";
-    private static String bearer = "";
 
     private ListView mMessageListView;
     private MessageAdapter mMessageAdapter;
@@ -74,41 +68,30 @@ public class ChatActivity extends AppCompatActivity {
     private String mUsername;
 
     private FirebaseDatabase mFirebaseDatabase;
-    private DatabaseReference mMessagesDatabaseReference, mUsersReference;   // references a  specific
+    private DatabaseReference mMessagesDatabaseReference;   // references a  specific
     private ChildEventListener mChildEventListener;  // for accessing the data in teh children
-    private static FirebaseAuth mFirebaseAuth;
+    public static FirebaseAuth mFirebaseAuth;
     private FirebaseAuth.AuthStateListener mAuthStatelistener;
-    private TextView header;
 
     private FirebaseStorage mFirebaseStorage;
     private StorageReference mSelectedPhotoReference;
 
-
     private FirebaseRemoteConfig mFirebaseRemoteConfig;
-
-    ContactsAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
-        header = findViewById(R.id.bearer);
-        bearer = getIntent().getStringExtra("Name");
-        header.setText(bearer);
-
-        mUsername = bearer;
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        mUsername = ANONYMOUS;
 
         // getting an instance of the root node
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         //getting a reference to a child node called messages
         mMessagesDatabaseReference = mFirebaseDatabase.getReference().child("messages");
-        mUsersReference = mFirebaseDatabase.getReference().child("Users");
 
-
-
-
-        mFirebaseAuth=FirebaseAuth.getInstance();
+        mFirebaseAuth = FirebaseAuth.getInstance();
 
         mFirebaseStorage = FirebaseStorage.getInstance();
         mSelectedPhotoReference = mFirebaseStorage.getReference().child("chat_photos");
@@ -117,18 +100,15 @@ public class ChatActivity extends AppCompatActivity {
 
         // Initialize references to views
         mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
-        mMessageListView = (ListView) findViewById(R.id.messageListView);
+        mMessageListView = findViewById(R.id.messageRecycler);
         mPhotoPickerButton = (ImageButton) findViewById(R.id.photoPickerButton);
         mMessageEditText = (EditText) findViewById(R.id.messageEditText);
         mSendButton = (Button) findViewById(R.id.sendButton);
-
-        getUsers();
 
         // Initialize message ListView and its adapter
         final List<FriendlyMessage> friendlyMessages = new ArrayList<>();
         mMessageAdapter = new MessageAdapter(this, R.layout.item_message, friendlyMessages);
         mMessageListView.setAdapter(mMessageAdapter);
-
 
         // Initialize progress bar
         mProgressBar.setVisibility(ProgressBar.INVISIBLE);
@@ -173,7 +153,6 @@ public class ChatActivity extends AppCompatActivity {
                 // TODO: Send messages on click
 
 
-
                 FriendlyMessage friendlyMessage = new FriendlyMessage(mMessageEditText.getText().toString(), mUsername, null);
                 mMessagesDatabaseReference.push().setValue(friendlyMessage);   //sending the message to the db
 
@@ -183,20 +162,18 @@ public class ChatActivity extends AppCompatActivity {
         });
 
 
-
         mAuthStatelistener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
 
                 FirebaseUser user = firebaseAuth.getCurrentUser();
 
-                if(user!=null){
+                if (user != null) {
                     //user is signed in
 
                     onSignedInIniatialise(user.getDisplayName());
-                    
-                }
-                else{
+
+                } else {
 
                     onSignedOutDestroyer();
 
@@ -218,6 +195,7 @@ public class ChatActivity extends AppCompatActivity {
                     if (mAuthStatelistener != null) {
                         mFirebaseAuth.removeAuthStateListener(mAuthStatelistener);
                     }
+
                     //clear the chats once signed out
                     mMessageAdapter.clear();
                     detachDatabaseReadListener();
@@ -225,6 +203,9 @@ public class ChatActivity extends AppCompatActivity {
 
             }
         };
+
+        /** Using RemoteConfig
+         */
 
         // Create Remote Config Setting to enable developer mode.
         // Fetching configs from the server is normally limited to 5 requests per hour.
@@ -255,14 +236,19 @@ public class ChatActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
 
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.sign_out_menu:
                 //sign out
                 AuthUI.getInstance().signOut(this);
-                Toast.makeText(getApplicationContext(),"Signed Out!!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Signed Out!!", Toast.LENGTH_SHORT).show();
                 return true;
+            case android.R.id.home:
+                onBackPressed();
 
-                default:return super.onOptionsItemSelected(item);
+            default:
+                return super.onOptionsItemSelected(item);
+
+
         }
     }
 
@@ -271,20 +257,13 @@ public class ChatActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==RC_SIGN_IN){
-            if(resultCode==RESULT_OK) {
+        if (requestCode == RC_SIGN_IN) {
+            if (resultCode == RESULT_OK)
                 Toast.makeText(getApplicationContext(), "Signed In", Toast.LENGTH_SHORT).show();
-                mUsersReference.push().setValue(mFirebaseAuth.getCurrentUser());
-               // userlist.add(new Contact(mFirebaseAuth.getCurrentUser().getDisplayName(),mFirebaseAuth.getCurrentUser().getPhotoUrl()));
-                startActivity(new Intent(this,ContactsActivity.class));
-            }
-        }
-        else if (resultCode == RESULT_CANCELED){
-            Toast.makeText(getApplicationContext(),"Sign In Cancelled", Toast.LENGTH_SHORT).show();
+        } else if (resultCode == RESULT_CANCELED) {
+            Toast.makeText(getApplicationContext(), "Sign In Cancelled", Toast.LENGTH_SHORT).show();
             finish();
-        }
-
-        else if(requestCode==RC_PHOTO_PICKER && resultCode==RESULT_OK){
+        } else if (requestCode == RC_PHOTO_PICKER && resultCode == RESULT_OK) {
             Uri selectedImageUri = data.getData();
             // Get a reference to store file at chat_photos/<FILENAME>
             StorageReference photoRef = mSelectedPhotoReference.child(selectedImageUri.getLastPathSegment());
@@ -299,7 +278,7 @@ public class ChatActivity extends AppCompatActivity {
                             // Set the download URL to the message box, so that the user can send it to the database
                             // the task will return the url by referencing the getResult()
                             Task<Uri> urlTask = taskSnapshot.getMetadata().getReference().getDownloadUrl();
-                            while (!urlTask.isSuccessful());
+                            while (!urlTask.isSuccessful()) ;
                             Uri downloadUrl = urlTask.getResult();
 
                             FriendlyMessage friendlyMessage = new FriendlyMessage(null, mUsername, downloadUrl.toString());
@@ -323,7 +302,7 @@ public class ChatActivity extends AppCompatActivity {
         mFirebaseAuth.addAuthStateListener(mAuthStatelistener);
     }
 
-    private void AttatchDatabaseReadUsername(){
+    private void AttatchDatabaseReadUsername() {
 
         if (mChildEventListener == null) {
 
@@ -371,9 +350,9 @@ public class ChatActivity extends AppCompatActivity {
         }
     }
 
-    private void onSignedInIniatialise(String username){
+    private void onSignedInIniatialise(String username) {
 
-        mUsername=username;
+        mUsername = username;
         AttatchDatabaseReadUsername();
 
     }
@@ -416,6 +395,7 @@ public class ChatActivity extends AppCompatActivity {
                     }
                 });
     }
+
     /**
      * Apply retrieved length limit to edit text field. This result may be fresh from the server or it may be from
      * cached values.
@@ -426,33 +406,6 @@ public class ChatActivity extends AppCompatActivity {
         Log.d(TAG, FRIENDLY_MSG_LENGTH_KEY + " = " + friendly_msg_length);
     }
 
-    void getUsers(){
-        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-
-        DatabaseReference usersdRef = rootRef.child("Users");
-        final ArrayList<Contact> userlist = new ArrayList<>();
-
-        ValueEventListener eventListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot ds : dataSnapshot.getChildren()) {
-
-                    FirebaseUser user = (FirebaseUser) ds.getValue();
-                    userlist.add(new Contact(user.getDisplayName(),user.getPhotoUrl()));
-
-
-                }
-               mAdapter = new ContactsAdapter(getApplicationContext(),userlist);
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        };
-        usersdRef.addListenerForSingleValueEvent(eventListener);
-    }
 
 }
 
