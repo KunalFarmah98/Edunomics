@@ -16,7 +16,7 @@
         android:id="@+id/profile_image"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:src="@drawable/me"
+        android:src="@drawable/edunomics_logo"
         app:civ_border_color="@color/colorPrimaryDark"
         app:civ_border_width="0.5dp" />
 
