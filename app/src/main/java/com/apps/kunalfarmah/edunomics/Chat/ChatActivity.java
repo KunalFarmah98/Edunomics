@@ -129,7 +129,7 @@ public class ChatActivity extends AppCompatActivity {
         mMessageListView.setAdapter(mMessageAdapter);
         mMessageListView.setLayoutManager(new LinearLayoutManager(this));
         mMessageListView.scrollToPosition(mMessageAdapter.getItemCount());
-        mMessageListView.setItemViewCacheSize(100);
+        mMessageListView.setItemViewCacheSize(50);
 
         // ImagePickerButton shows an image picker to upload a image for a message
         mPhotoPickerButton.setOnClickListener(new View.OnClickListener() {
@@ -176,9 +176,10 @@ public class ChatActivity extends AppCompatActivity {
 
                 //  Clear input box
                 mMessageEditText.setText("");
-                // hiding keyboard after sending message
-                InputMethodManager inputManager = (InputMethodManager) getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-                inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+               /** // hiding keyboard after sending message
+                * InputMethodManager inputManager = (InputMethodManager) getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                * inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+                **/
             }
         });
 
@@ -334,8 +335,11 @@ public class ChatActivity extends AppCompatActivity {
             mChildEventListener = new ChildEventListener() {
                 @Override
                 public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                    mProgressBar.setVisibility(View.VISIBLE);
-                    loading.setVisibility(View.VISIBLE);
+                    if(dataSnapshot.exists()) {
+                        mProgressBar.setVisibility(View.VISIBLE);
+                        loading.setVisibility(View.VISIBLE);
+                    }
+
                     FriendlyMessage friendlyMessage = dataSnapshot.getValue(FriendlyMessage.class);
                     // the data snapshot will get deserialised to the type of friendly message obj
                     friendlyMessages.add(friendlyMessage);

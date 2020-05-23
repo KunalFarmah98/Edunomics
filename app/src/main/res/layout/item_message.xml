@@ -52,8 +52,9 @@
         android:layout_gravity="end"
         android:layout_weight="0"
         android:background="@drawable/round_button_dark"
-        android:maxWidth="200dp"
+        android:maxWidth="225dp"
         android:padding="10dp"
+        android:textAlignment="viewStart"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#ffffff"
         tools:text="Message" />
@@ -78,8 +79,9 @@
         android:layout_gravity="left"
         android:layout_weight="0"
         android:background="@drawable/round_button_pink"
-        android:maxWidth="200dp"
+        android:maxWidth="225dp"
         android:padding="10dp"
+        android:textAlignment="viewStart"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#ffffff"
         tools:text="Message" />
