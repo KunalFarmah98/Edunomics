@@ -8,12 +8,14 @@ import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.content.Intent;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
 
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.apps.kunalfarmah.edunomics.R;
@@ -22,6 +24,7 @@ import com.apps.kunalfarmah.edunomics.R;
 public class AboutUs extends AppCompatActivity {
 
     Button km;
+    ImageButton fb,insta,twt,lin;
 
     @SuppressLint("WrongConstant")
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +54,44 @@ public class AboutUs extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), KnowMore.class));
+            }
+        });
+
+        fb = findViewById(R.id.fb);
+        insta = findViewById(R.id.insta);
+        twt = findViewById(R.id.twitter);
+        lin = findViewById(R.id.linkedin);
+
+        fb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Uri uri = Uri.parse("https://www.facebook.com/edunomics2020/");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
+        insta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Uri uri = Uri.parse("https://www.instagram.com/edunomics2020/");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
+        twt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Uri uri = Uri.parse("https://twitter.com/Edunomics2");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
+        lin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Uri uri = Uri.parse("https://www.linkedin.com/company/edunomics/");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
             }
         });
     }

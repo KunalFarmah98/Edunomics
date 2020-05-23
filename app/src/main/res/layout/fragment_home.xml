@@ -33,7 +33,10 @@
                 android:layout_height="200dp"
                 android:layout_below="@id/welcome"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/welcome" />
+                android:background="@drawable/welcome"
+                android:focusable="true"
+                android:focusableInTouchMode="true"/>
+            <requestFocus />
 
 
             <EditText

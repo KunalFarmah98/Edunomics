@@ -27,6 +27,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.apps.kunalfarmah.edunomics.R;
+import com.apps.kunalfarmah.edunomics.ui.MainActivity;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -111,11 +112,11 @@ public class ChatActivity extends AppCompatActivity {
         mFirebaseRemoteConfig = FirebaseRemoteConfig.getInstance();
 
         // Initialize references to views
-        mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
+        mProgressBar = findViewById(R.id.progressBar);
         mMessageListView = findViewById(R.id.messageRecycler);
-        mPhotoPickerButton = (ImageButton) findViewById(R.id.photoPickerButton);
-        mMessageEditText = (EditText) findViewById(R.id.messageEditText);
-        mSendButton = (Button) findViewById(R.id.sendButton);
+        mPhotoPickerButton = findViewById(R.id.photoPickerButton);
+        mMessageEditText = findViewById(R.id.messageEditText);
+        mSendButton = findViewById(R.id.sendButton);
         loading = findViewById(R.id.loading);
 
         // Initialize message ListView and its adapter
@@ -259,6 +260,8 @@ public class ChatActivity extends AppCompatActivity {
                 //sign out
                 AuthUI.getInstance().signOut(this);
                 Toast.makeText(getApplicationContext(), "Signed Out!!", Toast.LENGTH_SHORT).show();
+                finish();
+                startActivity(new Intent(this, MainActivity.class));
                 return true;
             case android.R.id.home:
                 onBackPressed();

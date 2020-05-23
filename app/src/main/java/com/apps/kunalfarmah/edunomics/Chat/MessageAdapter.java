@@ -29,6 +29,10 @@ public class MessageAdapter extends ArrayAdapter<FriendlyMessage> {
         TextView bm = convertView.findViewById(R.id.messageBearer);
         TextView userTextView = convertView.findViewById(R.id.usernameTextView);
         TextView bearerTextView = convertView.findViewById(R.id.bearernameTextView);
+        TextView imagesendertvl = convertView.findViewById(R.id.photosenderTextViewL);
+        TextView imagesendertvr = convertView.findViewById(R.id.photosenderTextViewR);
+        imagesendertvl.setVisibility(View.GONE);
+        imagesendertvr.setVisibility(View.GONE);
 
         FriendlyMessage message = getItem(position);
 
@@ -36,11 +40,30 @@ public class MessageAdapter extends ArrayAdapter<FriendlyMessage> {
         if (isPhoto) {
             um.setVisibility(View.GONE);
             bm.setVisibility(View.GONE);
+            bearerTextView.setVisibility(View.GONE);
+            userTextView.setVisibility(View.VISIBLE);
+            imagesendertvl.setText(message.getName());
+            imagesendertvr.setText(message.getName());
+            imagesendertvl.setVisibility(View.GONE);
+            imagesendertvr.setVisibility(View.GONE);
+
+            if(message.getName()==ChatActivity.mFirebaseAuth.getCurrentUser().getDisplayName()) {
+                imagesendertvr.setVisibility(View.GONE);
+                imagesendertvl.setVisibility(View.VISIBLE);
+
+            }
+            else {
+                imagesendertvl.setVisibility(View.GONE);
+                imagesendertvr.setVisibility(View.VISIBLE);
+            }
+
             photoImageView.setVisibility(View.VISIBLE);
             Glide.with(photoImageView.getContext())
                     .load(message.getPhotoUrl())
                     .into(photoImageView);
         } else {
+            imagesendertvl.setVisibility(View.GONE);
+            imagesendertvr.setVisibility(View.GONE);
             if (message.getName().equals(ChatActivity.mFirebaseAuth.getCurrentUser().getDisplayName())) {
                 um.setVisibility(View.VISIBLE);
                 userTextView.setVisibility(View.VISIBLE);

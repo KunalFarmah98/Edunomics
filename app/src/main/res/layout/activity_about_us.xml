@@ -1,50 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/white"
-    android:orientation="vertical"
-    tools:context=".ui.AboutUs">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="10dp"
-        android:text="ABOUT EDUNOMICS"
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        android:textSize="40sp" />
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        tools:context=".ui.AboutUs">
 
-    <ImageView
-        android:id="@+id/img"
-        android:layout_width="300dp"
-        android:layout_height="200dp"
-        android:layout_gravity="center"
-        android:layout_margin="10dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/aboutus" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:text="ABOUT EDUNOMICS"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="40sp" />
 
-    <TextView
-        style="@style/TextAppearance.AppCompat.Headline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:padding="10dp"
-        android:text="We are a bootstrap startup with a vision to impact education and economics solving complex problems with simple solutions. Edunomics combines tech expertise and business intelligence to catalyze change and deliver results. We are employing top talent to provide a uniquely matching solution for your unique problem."
-        android:textColor="@android:color/black"
-        android:textSize="17sp" />
+        <ImageView
+            android:id="@+id/img"
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/aboutus" />
 
-    <Button
-        android:id="@+id/knowmore"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="20dp"
-        android:background="@drawable/round_button_pink"
-        android:text="Know More?"
-        android:textAllCaps="false"
-        android:textColor="#ffffff" />
-</LinearLayout>
+        <TextView
+            style="@style/TextAppearance.AppCompat.Headline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:padding="10dp"
+            android:text="We are a bootstrap startup with a vision to impact education and economics solving complex problems with simple solutions. Edunomics combines tech expertise and business intelligence to catalyze change and deliver results. We are employing top talent to provide a uniquely matching solution for your unique problem."
+            android:textColor="@android:color/black"
+            android:textSize="17sp" />
+
+        <Button
+            android:id="@+id/knowmore"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:background="@drawable/round_button_pink"
+            android:text="Know More?"
+            android:textAllCaps="false"
+            android:textColor="#ffffff" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/fb"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/facebook" />
+
+            <ImageButton
+                android:id="@+id/insta"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/instagram" />
+
+            <ImageButton
+                android:id="@+id/twitter"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/twitter" />
+
+            <ImageButton
+                android:id="@+id/linkedin"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/linkedin" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

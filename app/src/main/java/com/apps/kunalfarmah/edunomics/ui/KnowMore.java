@@ -11,6 +11,7 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.apps.kunalfarmah.edunomics.R;
@@ -40,6 +41,8 @@ public class KnowMore extends AppCompatActivity {
         layoutParams.rightMargin = 40;
         imageView.setLayoutParams(layoutParams);
         actionBar.setCustomView(imageView);
+
+
 
         an = findViewById(R.id.applynow);
         an2 = findViewById(R.id.apply);

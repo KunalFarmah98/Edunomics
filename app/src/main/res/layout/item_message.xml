@@ -9,6 +9,27 @@
     android:layout_marginEnd="16dp"
     android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/photosenderTextViewL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:visibility="gone"
+        android:layout_gravity="left"
+        android:layout_weight="0"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:text="Name" />
+    <TextView
+        android:id="@+id/photosenderTextViewR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_marginEnd="10dp"
+        android:layout_gravity="end"
+        android:layout_weight="0"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:text="Name" />
+
     <ImageView
         android:id="@+id/photoImageView"
         android:layout_width="match_parent"
@@ -23,32 +44,23 @@
         android:visibility="gone" />
 
     <TextView
-        android:id="@+id/messageUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="0"
-        android:background="@drawable/round_button"
-        android:padding="10dp"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#ffffff"
-        tools:text="Message" />
-
-    <TextView
         android:id="@+id/usernameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
+        android:layout_gravity="end"
         android:layout_weight="0"
         android:textAppearance="?android:attr/textAppearanceSmall"
         tools:text="Name" />
 
     <TextView
-        android:id="@+id/messageBearer"
+        android:id="@+id/messageUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end"
         android:layout_weight="0"
-        android:background="@drawable/round_button_pink"
+        android:layout_gravity="end"
+        android:maxWidth="200dp"
+        android:background="@drawable/round_button_dark"
         android:padding="10dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#ffffff"
@@ -58,11 +70,27 @@
         android:id="@+id/bearernameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end"
+        android:layout_gravity="left"
         android:layout_marginEnd="10dp"
         android:layout_weight="0"
         android:textAppearance="?android:attr/textAppearanceSmall"
         tools:text="Name" />
+    <TextView
+        android:id="@+id/messageBearer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:maxWidth="200dp"
+        android:layout_weight="0"
+        android:background="@drawable/round_button_pink"
+        android:padding="10dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#ffffff"
+        tools:text="Message" />
+
+
+
+
 
 
 </LinearLayout>

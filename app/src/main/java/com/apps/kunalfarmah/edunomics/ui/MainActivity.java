@@ -37,8 +37,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private AppBarConfiguration mAppBarConfiguration;
     DrawerLayout drawer;
 
-    ImageButton fb, insta, twt, lin;
-
     @SuppressLint("WrongConstant")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,43 +81,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         navigationView.setNavigationItemSelectedListener(this);
 
-        fb = findViewById(R.id.fb);
-        insta = findViewById(R.id.insta);
-        twt = findViewById(R.id.twitter);
-        lin = findViewById(R.id.linkedin);
 
-        fb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Uri uri = Uri.parse("https://www.facebook.com/edunomics2020/");
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(intent);
-            }
-        });
-        insta.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Uri uri = Uri.parse("https://www.instagram.com/edunomics2020/");
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(intent);
-            }
-        });
-        twt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Uri uri = Uri.parse("https://twitter.com/Edunomics2");
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(intent);
-            }
-        });
-        lin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Uri uri = Uri.parse("https://www.linkedin.com/company/edunomics/");
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(intent);
-            }
-        });
 
 
     }
